@@ -65,8 +65,11 @@ app.get("/posts/:id", (req, res) => {
   </body>
 </html>
 `;
-
-  res.send(html);
+  if (post.id) {
+    res.send(html);
+  } else {
+    res.send("Opos! 404 - Page Not Found");
+  }
 });
 
 const PORT = 1337;
