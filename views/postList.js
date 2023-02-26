@@ -1,18 +1,18 @@
 const timeAgo = require("node-time-ago");
+const html = require("html-template-tag");
 
 module.exports = (posts) => {
-  const html = `<!DOCTYPE html>
-  <html>
-  <head>
-    <title>Wizard News</title>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
-    <div class="news-list">
-      <header><img src="/logo.png"/>Wizard News</header>
-      ${posts
-        .map(
-          (post) => `
+  return html`<!DOCTYPE html>
+    <html>
+      <head>
+        <title>Wizard News</title>
+        <link rel="stylesheet" href="/style.css" />
+      </head>
+      <body>
+        <div class="news-list">
+          <header><img src="/logo.png" />Wizard News</header>
+          ${posts.map(
+            (post) => `
         <div class='news-item'>
           <p>
             <span class="news-position">${post.id}. ▲</span>
@@ -24,10 +24,8 @@ module.exports = (posts) => {
           </small>
           
         </div>`
-        )
-        .join("")}
-    </div>
-  </body>
-</html>`;
-  return html;
+          )}
+        </div>
+      </body>
+    </html>`;
 };
